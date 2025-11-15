@@ -1,11 +1,11 @@
 import { PokemonStats } from "@/components/PokemonStats";
 import { formatName } from "@/lib/formatName";
 import { getPokemonData } from "@/lib/PokemonApi";
-import Image from "next/image";
+import { PokemonListType } from "@/types/pokemon";
 
 const page = async ({ params }: { params: { pokemonName: string } }) => {
   const { pokemonName } = await params;
-  const data = await getPokemonData(pokemonName);
+  const data: PokemonListType = await getPokemonData(pokemonName);
 
   return (
     <div className="flex items-center justify-center min-h-[85vh] container mx-auto px-4 py-8">

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "PokeMentor",
-  description: "PokeMentor is a pokemon companion app to help you train pokemon ev ",
+  description: "PokeMentor is a pokemon companion app to help you train pokemon ev",
 };
 
 export default function RootLayout({
