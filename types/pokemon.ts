@@ -14,6 +14,15 @@ export type PokemonListType = {
       name: string;
     }
   }[];
+  weight: number;
+  height: number;
+  stats: {
+    base_stat: number;
+    eeffort: number;
+    stat: {
+      name: string;
+    }
+  }[];
 };
 
 export interface PokemonListProps {

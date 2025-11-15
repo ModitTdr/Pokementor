@@ -1,8 +1,9 @@
-export const PokemonStats = ({ data }) => {
+import { PokemonListType } from "@/types/pokemon";
+
+export const PokemonStats = ({ data }: { data: PokemonListType }) => {
   return (
     <div className="space-y-6">
 
-      {/* HEIGHT + WEIGHT */}
       <div className="grid grid-cols-2 gap-4">
         <div className="p-4 bg-neutral-900 rounded-lg text-white">
           <h2 className="text-xl font-semibold">Height</h2>
