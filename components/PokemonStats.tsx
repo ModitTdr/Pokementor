@@ -1,6 +1,7 @@
-import { PokemonListType } from "@/types/pokemon";
+import { usePokemon } from "./PokemonContext";
 
-export const PokemonStats = ({ data }: { data: PokemonListType }) => {
+export const PokemonStats = () => {
+  const data = usePokemon();
   return (
     <div className="space-y-6">
 
@@ -22,7 +23,7 @@ export const PokemonStats = ({ data }: { data: PokemonListType }) => {
 
         <div className="space-y-3">
           {data.stats.map((stat) => (
-            <div key={stat.stat.name} className="text-white">
+            <div key={stat.stat.name} className="text-foreground/50">
               <div className="flex justify-between">
                 <span className="capitalize">{stat.stat.name}</span>
                 <span>{stat.base_stat}</span>
@@ -32,7 +33,7 @@ export const PokemonStats = ({ data }: { data: PokemonListType }) => {
                 <div
                   className={`h-full bg-${data.types[0].type.name} rounded`}
                   style={{ width: `${(stat.base_stat / 200) * 100}%` }}
-                ></div>
+                />
               </div>
             </div>
           ))}

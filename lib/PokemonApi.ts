@@ -31,3 +31,10 @@ export async function getPokemonData(name: string) {
   return response.data;
 }
 
+export async function getPokemonEvolution(name: string) {
+  const response = await axios.get(POKEMONAPI_URL + `pokemon-species/${name}`);
+  const evolutionUrl = response.data.evolution_chain.url;
+  const evolutionResponse = await axios.get(evolutionUrl);
+  return evolutionResponse.data;
+}
+
