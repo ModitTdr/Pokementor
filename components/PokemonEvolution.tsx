@@ -1,6 +1,7 @@
 import { getPokemonEvolution } from "@/lib/PokemonApi";
 import { usePokemon } from "./PokemonContext";
 import { useEffect, useState } from "react";
+import { formatName } from "@/lib/formatName";
 
 interface EvolutionData {
   id: number;
@@ -21,7 +22,6 @@ const PokemonEvolution = () => {
   useEffect(() => {
     const fetchEvolutionData = async () => {
       try {
-
         const evolution = await getPokemonEvolution(data.name);
         const collectPokemonData = (chain: EvolutionChain): { name: string, url: string }[] => {
           const data = [{ name: chain.species.name, url: chain.species.url }];
@@ -56,17 +56,15 @@ const PokemonEvolution = () => {
   if (loading) return <div>Loading...</div>;
   if (!evolutionData) return <div>No data</div>;
   return (
-    <div>
-      <p>
-        {
-          evolutionData.map(({ id, name }) => (
-            <>
-              <span key={id}>{name}</span>
-              <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} width={80} />
-            </>
-          ))
-        }
-      </p>
+    <div className="flex justify-between">
+      {
+        evolutionData.map(({ id, name }) => (
+          <div key={id}>
+            <span>{formatName(name)}</span>
+            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`} width={120} />
+          </div>
+        ))
+      }
     </div>
   );
 
